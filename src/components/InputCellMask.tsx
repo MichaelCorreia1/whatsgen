@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 
 const InputMask = () => {
   const [card, setCard] = useState()
-  const inputCard = useRef()
+  const inputCard = useRef(null)
 
   // function to add phone mask
-  const addMask = (e) => {
+  const addMask = (e: any) => {
     const value = e.target.value
     const card = value.replace(/\D/g, '').replace(/(\d{3})(\d)/, '$1 $2')
     setCard(card)
@@ -13,7 +13,7 @@ const InputMask = () => {
 
   const maskPhone = () => {
     if (!inputCard.current) return
-
+    // @ts-ignore
     inputCard.current.value = inputCard.current.value
       .replace(/\D/g, '')
       .replace(/(\d{2})(\d)/, '($1) $2')
